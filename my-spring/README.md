@@ -1,7 +1,7 @@
-# myjava
+# my-spring
 
 ## Description 
-> **my java project**  
+> **my spring project**  
 > **GitHub: [https://github.com/csulwk/myjava.git)**  
 
 ## Environment
@@ -9,13 +9,13 @@
 
 ## Framework
 ```
-vat-server  
+my-spring  
 ├─ src  
 │  ├─ main
 │  │  ├─ java
-│  │  │  ├─ com.lwk.mythread
-│  │  │  │  └─ service                      -- 业务类
-│  │  │  └─ VatServerApplication.java       -- 启动类
+│  │  │  ├─ com.lwk.myspring
+│  │  │  │  └─ udf                          -- 业务类
+│  │  │  └─ MySpringApplication.java        -- 启动类
 │  │  └─ resources
 │  │     ├─ bootstrap.yml                   -- 启动配置
 │  │     └─ application.yml                 -- 应用配置
