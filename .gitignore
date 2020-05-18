@@ -1,0 +1,22 @@
+### IDEA ###
+.idea/*
+*.iml
+*/target/*
+*/*.iml
+
+### Eclipse ###
+*.tmp
+*.bak
+*.swp
+.settings/
+.loadpath
+.project
+.classpath
+
+### Package Files ###
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
