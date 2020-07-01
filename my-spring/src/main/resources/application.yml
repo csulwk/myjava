@@ -6,3 +6,5 @@ spring:
 logging:
   level:
     com.lwk.myspring: info
+
+corn-fix-time: '0/10 * * * * ? '

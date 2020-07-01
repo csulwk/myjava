@@ -15,6 +15,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author kai
@@ -26,6 +27,13 @@ public class MyUdfTest {
     @Test
     public void test() {
         log.info("test...");
+        List<String> list2 = Arrays.asList("62220008asd", "6222000safds9");
+        String joinStr = String.join(",", list2);
+        log.info("joinStr...{}", joinStr);
+        String res = list2.stream().map( x -> {
+            return x.toUpperCase() + "-test";
+        }).collect(Collectors.joining(","));
+        log.info("res...{}", res);
     }
 
     @Test
