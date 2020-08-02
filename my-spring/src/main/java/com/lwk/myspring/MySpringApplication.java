@@ -9,7 +9,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * @author kai
  * @date 2020-5-18 22:05
  */
-@EnableScheduling
 @SpringBootApplication
 public class MySpringApplication {
 

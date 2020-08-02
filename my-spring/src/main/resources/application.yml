@@ -3,8 +3,26 @@ server:
 spring:
   application:
     name: my-spring
+  datasource:
+     url: jdbc:hive2://192.168.99.100:10000/test
+     username: root
+     password: 123456
+     driver-class-name: org.apache.hive.jdbc.HiveDriver
+     type: com.alibaba.druid.pool.DruidDataSource
+     initialSize: 5
+     minIdle: 5
+     maxActive: 20
+     maxWait: 60000
+     timeBetweenEvictionRunsMillis: 60000
+     minEvictableIdleTimeMillis: 300000
+     testWhileIdle: false
+     testOnBorrow: false
+     testOnReturn: false
+     poolPreparedStatements: true
+
 logging:
-  level:
-    com.lwk.myspring: info
+  config: classpath:log4j2.xml
 
 corn-fix-time: '0/10 * * * * ? '
+
+

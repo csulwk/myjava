@@ -1,14 +1,30 @@
 package com.lwk.myspring;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+@RunWith(SpringRunner.class)
 @SpringBootTest
-class MySpringApplicationTest {
+@Slf4j
+public class MySpringApplicationTest {
+
+    @Autowired
+    public DataSource dataSource;
 
     @Test
-    public void test() {
-
+    public void test() throws SQLException {
+        log.info("{}", dataSource.getClass());
+        Connection conn = dataSource.getConnection();
+        log.info("{}", conn.getMetaData());
     }
 
 }
