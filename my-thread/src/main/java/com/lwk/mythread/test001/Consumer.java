@@ -1,4 +1,4 @@
-package com.lwk.mythread.demo;
+package com.lwk.mythread.test001;
 
 /**
  * 消费者
