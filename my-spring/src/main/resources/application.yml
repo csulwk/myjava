@@ -25,4 +25,9 @@ logging:
 
 corn-fix-time: '0/10 * * * * ? '
 
+# 上传文件总的最大值
+spring.servlet.multipart.max-request-size: 10MB
+# 单个文件的最大值
+spring.servlet.multipart.max-file-size: 10MB
+
 
