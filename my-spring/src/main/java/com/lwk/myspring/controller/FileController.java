@@ -32,7 +32,7 @@ public class FileController {
 
     @PostMapping("/file/upload")
     public JSONObject queryHive1(@RequestParam("file") MultipartFile file) {
-        // curl -F 'file=@C:\Users\kai\Desktop\abc-test1.zip' http://localhost:8080/file/upload
+        // curl -F "file=@C:\Users\kai\Desktop\abc-test1.zip" http://localhost:8080/file/upload
         JSONObject result = new JSONObject();
         if (file.isEmpty()) {
             log.info("file is empty");
