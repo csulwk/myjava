@@ -1,16 +1,12 @@
-package com.lwk.myspring.hive;
+package com.lwk.myspring.hive.main;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import com.lwk.myspring.util.HiveUtil;
-import com.lwk.myspring.util.JdbcUtil;
+import com.lwk.myspring.hive.util.HiveUtil;
+import com.lwk.myspring.hive.util.JdbcUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.hive.jdbc.HiveStatement;
-import org.springframework.util.StringUtils;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

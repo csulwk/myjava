@@ -1,10 +1,9 @@
-package com.lwk.myspring.controller;
+package com.lwk.myspring.hive.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.lwk.myspring.util.HiveDataSource;
-import com.lwk.myspring.util.HiveUtil;
-import com.lwk.myspring.util.JdbcUtil;
+import com.lwk.myspring.hive.util.HiveUtil;
+import com.lwk.myspring.hive.util.JdbcUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.lwk.myspring.util;
+package com.lwk.myspring.hive.util;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;

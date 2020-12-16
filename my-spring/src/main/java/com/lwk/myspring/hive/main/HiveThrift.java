@@ -1,4 +1,4 @@
-package com.lwk.myspring.hive;
+package com.lwk.myspring.hive.main;
 
 import org.apache.hive.service.auth.PlainSaslHelper;
 import org.apache.hive.service.cli.OperationHandle;

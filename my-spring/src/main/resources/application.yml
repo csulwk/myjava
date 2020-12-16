@@ -4,25 +4,36 @@ spring:
   application:
     name: my-spring
   datasource:
-     url: jdbc:hive2://192.168.99.100:10000/test
-     username: root
-     password: 123456
-     driver-class-name: org.apache.hive.jdbc.HiveDriver
-     type: com.alibaba.druid.pool.DruidDataSource
-     initialSize: 5
-     minIdle: 5
-     maxActive: 20
-     maxWait: 60000
-     timeBetweenEvictionRunsMillis: 60000
-     minEvictableIdleTimeMillis: 300000
-     testWhileIdle: false
-     testOnBorrow: false
-     testOnReturn: false
-     poolPreparedStatements: true
+    type: com.alibaba.druid.pool.DruidDataSource
+    # HIVE数据源配置
+    hive:
+      url: jdbc:hive2://192.168.99.100:10000/test
+      username: root
+      password: 123456
+      driver-class-name: org.apache.hive.jdbc.HiveDriver
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+    # MYSQL数据源配置
+    mysql:
+      url: jdbc:mysql://192.168.99.100:3306/my_spring?characterEncoding=utf8
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+
+mybatis:
+  type-aliases-package: com.lwk.myspring.mysql.entity
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
 
 logging:
   config: classpath:log4j2.xml
 
+# CORN表达式
 corn-fix-time: '0/10 * * * * ? '
 
 # 上传文件总的最大值

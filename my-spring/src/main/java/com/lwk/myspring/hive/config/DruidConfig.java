@@ -1,4 +1,4 @@
-package com.lwk.myspring.config;
+package com.lwk.myspring.hive.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
