@@ -17,14 +17,8 @@ import java.sql.SQLException;
 @Slf4j
 public class MySpringApplicationTest {
 
-    @Autowired
-    public DataSource dataSource;
-
     @Test
-    public void test() throws SQLException {
-        log.info("{}", dataSource.getClass());
-        Connection conn = dataSource.getConnection();
-        log.info("{}", conn.getMetaData());
+    public void test() {
     }
 
 }

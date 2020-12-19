@@ -32,6 +32,8 @@ mybatis:
 
 logging:
   config: classpath:log4j2.xml
+  level:
+    com.lwk.myspring.mysql.dao: debug
 
 # CORN表达式
 corn-fix-time: '0/10 * * * * ? '

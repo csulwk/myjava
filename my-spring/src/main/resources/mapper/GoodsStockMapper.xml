@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lwk.myspring.mysql.dao.GoodsStockMapper">
+  <resultMap id="BaseResultMap" type="com.lwk.myspring.mysql.entity.GoodsStock">
+    <id column="gs_stock_id" jdbcType="BIGINT" property="gsStockId" />
+    <result column="gs_goods_id" jdbcType="VARCHAR" property="gsGoodsId" />
+    <result column="gs_total_count" jdbcType="INTEGER" property="gsTotalCount" />
+    <result column="gs_sold_count" jdbcType="INTEGER" property="gsSoldCount" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    gs_stock_id, gs_goods_id, gs_total_count, gs_sold_count, create_time, update_time,
+    update_by
+  </sql>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from goods_stock
+        order by gs_stock_id
+    </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from goods_stock
+    where gs_stock_id = #{gsStockId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from goods_stock
+    where gs_stock_id = #{gsStockId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.lwk.myspring.mysql.entity.GoodsStock">
+    insert into goods_stock (gs_stock_id, gs_goods_id, gs_total_count,
+      gs_sold_count, create_time, update_time,
+      update_by)
+    values (#{gsStockId,jdbcType=BIGINT}, #{gsGoodsId,jdbcType=VARCHAR}, #{gsTotalCount,jdbcType=INTEGER},
+      #{gsSoldCount,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+      #{updateBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lwk.myspring.mysql.entity.GoodsStock">
+    insert into goods_stock
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gsStockId != null">
+        gs_stock_id,
+      </if>
+      <if test="gsGoodsId != null">
+        gs_goods_id,
+      </if>
+      <if test="gsTotalCount != null">
+        gs_total_count,
+      </if>
+      <if test="gsSoldCount != null">
+        gs_sold_count,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gsStockId != null">
+        #{gsStockId,jdbcType=BIGINT},
+      </if>
+      <if test="gsGoodsId != null">
+        #{gsGoodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="gsTotalCount != null">
+        #{gsTotalCount,jdbcType=INTEGER},
+      </if>
+      <if test="gsSoldCount != null">
+        #{gsSoldCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lwk.myspring.mysql.entity.GoodsStock">
+    update goods_stock
+    <set>
+      <if test="gsGoodsId != null">
+        gs_goods_id = #{gsGoodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="gsTotalCount != null">
+        gs_total_count = #{gsTotalCount,jdbcType=INTEGER},
+      </if>
+      <if test="gsSoldCount != null">
+        gs_sold_count = #{gsSoldCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where gs_stock_id = #{gsStockId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lwk.myspring.mysql.entity.GoodsStock">
+    update goods_stock
+    set gs_goods_id = #{gsGoodsId,jdbcType=VARCHAR},
+      gs_total_count = #{gsTotalCount,jdbcType=INTEGER},
+      gs_sold_count = #{gsSoldCount,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR}
+    where gs_stock_id = #{gsStockId,jdbcType=BIGINT}
+  </update>
+</mapper>

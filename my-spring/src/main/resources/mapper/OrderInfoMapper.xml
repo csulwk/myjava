@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lwk.myspring.mysql.dao.OrderInfoMapper">
+  <resultMap id="BaseResultMap" type="com.lwk.myspring.mysql.entity.OrderInfo">
+    <id column="oi_order_id" jdbcType="VARCHAR" property="oiOrderId" />
+    <result column="oi_goods_id" jdbcType="VARCHAR" property="oiGoodsId" />
+    <result column="oi_user_id" jdbcType="VARCHAR" property="oiUserId" />
+    <result column="oi_price" jdbcType="DECIMAL" property="oiPrice" />
+    <result column="oi_count" jdbcType="INTEGER" property="oiCount" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    oi_order_id, oi_goods_id, oi_user_id, oi_price, oi_count, create_time, update_time,
+    update_by
+  </sql>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from order_info
+        order by oi_order_id
+    </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from order_info
+    where oi_order_id = #{oiOrderId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from order_info
+    where oi_order_id = #{oiOrderId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lwk.myspring.mysql.entity.OrderInfo">
+    insert into order_info (oi_order_id, oi_goods_id, oi_user_id,
+      oi_price, oi_count, create_time,
+      update_time, update_by)
+    values (#{oiOrderId,jdbcType=VARCHAR}, #{oiGoodsId,jdbcType=VARCHAR}, #{oiUserId,jdbcType=VARCHAR},
+      #{oiPrice,jdbcType=DECIMAL}, #{oiCount,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lwk.myspring.mysql.entity.OrderInfo">
+    insert into order_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oiOrderId != null">
+        oi_order_id,
+      </if>
+      <if test="oiGoodsId != null">
+        oi_goods_id,
+      </if>
+      <if test="oiUserId != null">
+        oi_user_id,
+      </if>
+      <if test="oiPrice != null">
+        oi_price,
+      </if>
+      <if test="oiCount != null">
+        oi_count,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oiOrderId != null">
+        #{oiOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="oiGoodsId != null">
+        #{oiGoodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="oiUserId != null">
+        #{oiUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="oiPrice != null">
+        #{oiPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="oiCount != null">
+        #{oiCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lwk.myspring.mysql.entity.OrderInfo">
+    update order_info
+    <set>
+      <if test="oiGoodsId != null">
+        oi_goods_id = #{oiGoodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="oiUserId != null">
+        oi_user_id = #{oiUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="oiPrice != null">
+        oi_price = #{oiPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="oiCount != null">
+        oi_count = #{oiCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where oi_order_id = #{oiOrderId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lwk.myspring.mysql.entity.OrderInfo">
+    update order_info
+    set oi_goods_id = #{oiGoodsId,jdbcType=VARCHAR},
+      oi_user_id = #{oiUserId,jdbcType=VARCHAR},
+      oi_price = #{oiPrice,jdbcType=DECIMAL},
+      oi_count = #{oiCount,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR}
+    where oi_order_id = #{oiOrderId,jdbcType=VARCHAR}
+  </update>
+</mapper>
