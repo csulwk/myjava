@@ -67,7 +67,7 @@ public class IdWorker {
      * 生成订单号
      * @return 订单号
      */
-    private synchronized String nextId() {
+    public synchronized String nextId() {
         String nowTime = getSystemTime();
         if (nowTime.equals(lastTime)) {
             count++;

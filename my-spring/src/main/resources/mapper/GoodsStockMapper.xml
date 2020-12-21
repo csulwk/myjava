@@ -121,4 +121,15 @@
       update_by = #{updateBy,jdbcType=VARCHAR}
     where gs_stock_id = #{gsStockId,jdbcType=BIGINT}
   </update>
+    <update id="deductStock">
+        update goods_stock
+        set gs_sold_count = gs_sold_count + #{count}
+        where gs_goods_id = #{goodsId} and gs_total_count >= gs_sold_count + #{count}
+    </update>
+    <select id="selectByGoodsId" resultMap="BaseResultMap">
+        select
+          <include refid="Base_Column_List" />
+        from goods_stock
+        where gs_goods_id = #{goodsId}
+    </select>
 </mapper>

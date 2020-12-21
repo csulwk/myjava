@@ -2,8 +2,7 @@ package com.lwk.myspring;
 
 import com.alibaba.fastjson.JSONObject;
 import com.lwk.myspring.mysql.entity.OrderInfo;
-import com.lwk.myspring.mysql.service.impl.BaseServiceImpl;
-import com.lwk.myspring.mysql.service.impl.OrderServiceImpl;
+import com.lwk.myspring.mysql.service.BaseService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ import java.util.List;
 public class BaseServiceTest extends BaseTest {
 
     @Autowired
-    private BaseServiceImpl<OrderInfo, String> baseService;
+    private BaseService<OrderInfo, String> baseService;
 
     @Test
     public void testOrder() {

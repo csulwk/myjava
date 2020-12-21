@@ -83,4 +83,5 @@ public class OrderInfo {
     public void setUpdateBy(String updateBy) {
         this.updateBy = updateBy;
     }
+
 }
