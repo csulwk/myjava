@@ -5,19 +5,16 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 订单请求
+ * 商品请求
  * @author kai
- * @date 2020-12-21 22:32
+ * @date 2020-12-22 23:14
  */
 @Getter
 @Setter
-public class OrderReq {
+public class GoodsReq {
 
     private String goodsId;
-    private String userId;
     private int count;
-    private String type;
-    private boolean oExp;
     private boolean gExp;
 
     @Override

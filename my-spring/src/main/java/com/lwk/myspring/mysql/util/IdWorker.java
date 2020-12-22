@@ -44,8 +44,7 @@ public class IdWorker {
         } catch (UnknownHostException e) {
             log.error("获取系统信息异常...", e);
         }
-        System.out.println(sys.toString().hashCode());
-        int subVal = sys.toString().hashCode() % 100;
+        int subVal = Math.abs(sys.toString().hashCode()) % 100;
         return StringUtils.leftPad(String.valueOf(subVal), len, "0");
     }
     /** 创建一个空实例对象，类需要用的时候才赋值 */
