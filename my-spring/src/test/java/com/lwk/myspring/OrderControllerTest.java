@@ -81,6 +81,7 @@ public class OrderControllerTest extends BaseTest {
      */
     @Test
     public void SUPPORTS1() {
+        // 支持事务。当前有事务就加入当前事务。当前没有事务就算了，不会开启一个事务。
         // 示例1：外层正常有事务，内层报错。结果：外层回滚，内层回滚。
         // REQUIRED,SUPPORTS,MANDATORY,REQUIRES_NEW,NOT_SUPPORTED,NEVER,NESTED
         testOrder("SUPPORTS", "GID0001", "UID01", 1, false, true);
@@ -150,7 +151,7 @@ public class OrderControllerTest extends BaseTest {
      */
     @Test
     public void REQUIRES_NEW1() {
-        // 支持事务。每次都是创建一个新事物，如果当前已经在事务中了，会挂起当前事务。
+        // 支持事务。每次都是创建一个新事务，如果当前已经在事务中了，会挂起当前事务。
         // 示例1：内层正常，外层报错。结果：内层提交，外层回滚。
         // REQUIRED,SUPPORTS,MANDATORY,REQUIRES_NEW,NOT_SUPPORTED,NEVER,NESTED
         testOrder("REQUIRES_NEW", "GID0001", "UID01", 1, true, false);
