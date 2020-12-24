@@ -9,58 +9,39 @@ import java.util.List;
  * @author kai
  * @date 2020-12-19 14:01
  */
-public class BaseService<T, PK extends Serializable> {
-
-    private BaseMapper<T, PK> baseMapper;
-    /**
-     * 初始化BaseMapper
-     * @param baseMapper BaseMapper<T, PK>
-     */
-    protected void initMapper(BaseMapper<T, PK> baseMapper) {
-        this.baseMapper = baseMapper;
-    }
+public interface BaseService<T, PK extends Serializable> {
 
     /**
      * selectAll
      * @return List<T>
      */
-    public List<T> selectAll() {
-        return baseMapper.selectAll();
-    }
+    public List<T> selectAll();
 
     /**
      * selectByPrimaryKey
      * @param id PK
      * @return T
      */
-    public T selectByPrimaryKey(PK id) {
-        return baseMapper.selectByPrimaryKey(id);
-    }
+    public T selectByPrimaryKey(PK id);
 
     /**
      * insertSelective
      * @param entity T
      * @return int
      */
-    public int insertSelective(T entity) {
-        return baseMapper.insertSelective(entity);
-    }
+    public int insertSelective(T entity);
 
     /**
      * updateByPrimaryKeySelective
      * @param entity T
      * @return int
      */
-    public int updateByPrimaryKeySelective(T entity) {
-        return baseMapper.updateByPrimaryKeySelective(entity);
-    }
+    public int updateByPrimaryKeySelective(T entity);
 
     /**
      * deleteByPrimaryKey
      * @param id PK
      * @return int
      */
-    public int deleteByPrimaryKey(PK id) {
-        return baseMapper.deleteByPrimaryKey(id);
-    }
+    public int deleteByPrimaryKey(PK id);
 }

@@ -4,10 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.lwk.myspring.mysql.dao.GoodsStockMapper;
 import com.lwk.myspring.mysql.dao.OrderInfoMapper;
 import com.lwk.myspring.mysql.entity.GoodsReq;
-import com.lwk.myspring.mysql.entity.GoodsStock;
 import com.lwk.myspring.mysql.entity.OrderInfo;
 import com.lwk.myspring.mysql.entity.OrderReq;
-import com.lwk.myspring.mysql.service.BaseService;
 import com.lwk.myspring.mysql.service.GoodsService;
 import com.lwk.myspring.mysql.service.OrderService;
 import com.lwk.myspring.mysql.util.IdWorker;
@@ -29,7 +27,7 @@ import java.math.RoundingMode;
  */
 @Service
 @Slf4j
-public class OrderServiceImpl extends BaseService<OrderInfo, String> implements OrderService {
+public class OrderServiceImpl extends BaseServiceImpl<OrderInfo, String> implements OrderService {
 
     private OrderInfoMapper orderInfoMapper;
     @Autowired
@@ -82,8 +80,8 @@ public class OrderServiceImpl extends BaseService<OrderInfo, String> implements 
 
         // 异常处理
         if (req.isOExp()) {
-            log.warn("抛出异常...");
-            throw new NullPointerException("抛出异常...");
+            log.warn("订单异常...");
+            throw new NullPointerException("订单异常...");
         }
         return new JSONObject().fluentPut("code", "success");
     }

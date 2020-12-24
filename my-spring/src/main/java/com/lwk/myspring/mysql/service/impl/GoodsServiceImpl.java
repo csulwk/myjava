@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.lwk.myspring.mysql.dao.GoodsStockMapper;
 import com.lwk.myspring.mysql.entity.GoodsReq;
 import com.lwk.myspring.mysql.entity.GoodsStock;
-import com.lwk.myspring.mysql.service.BaseService;
 import com.lwk.myspring.mysql.service.GoodsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Slf4j
-public class GoodsServiceImpl extends BaseService<GoodsStock, Long> implements GoodsService {
+public class GoodsServiceImpl extends BaseServiceImpl<GoodsStock, Long> implements GoodsService {
 
     private GoodsStockMapper goodsStockMapper;
     @Autowired
@@ -39,18 +38,18 @@ public class GoodsServiceImpl extends BaseService<GoodsStock, Long> implements G
 
         // 异常处理
         if (req.isGExp()) {
-            log.warn("抛出异常...");
-            throw new NullPointerException("抛出异常...");
+            log.warn("库存异常...");
+            throw new NullPointerException("库存异常...");
         }
         return new JSONObject().fluentPut("code", "success");
     }
 
     /**
      * 作用：[spring的默认传播行为]
-     *   支持事务，如果业务方法执行时在一个事务中，则加入当前事务，否则则重新开始一个事务。
+     *   支持事务，如果业务方法执行时在一个事务中，则加入当前事务，否则重新开始一个事务。
      *   外层事务提交了，内层才会提交。
-     *   内/外只要有报错，他俩会一起回滚。（栗子二，三）
-     *   只要内层方法报错抛出异常，即使外层有try-catch，该事务也会回滚！（栗子一）
+     *   内/外只要有报错，他俩会一起回滚。（示例2/3）
+     *   只要内层方法报错抛出异常，即使外层有try-catch，该事务也会回滚！（示例1）
      *   内层不存在事务，外层存在事务，即加入外层的事务，不管内层，外层报错，都会回滚事务。
      * 示例1：外层正常try-catch内层，内层出错。结果：事务回滚，内层外层都回滚。
      * 示例2：外层正常，内层出错，外层不try-catch。结果：事务回滚，内层外层都回滚。
@@ -150,5 +149,10 @@ public class GoodsServiceImpl extends BaseService<GoodsStock, Long> implements G
     @Override
     public JSONObject goodsNested(GoodsReq req) {
         return deductStock(req);
+    }
+
+    @Override
+    public GoodsStock selectByGoodsId(String goodsId) {
+        return goodsStockMapper.selectByGoodsId(goodsId);
     }
 }
