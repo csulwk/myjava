@@ -43,7 +43,7 @@ public class ScheduleTest {
     /**
      * 表示 每隔 5000 毫秒执行一次
      */
-    // @Scheduled(fixedRate = 5000)
+    //@Scheduled(fixedRate = 5000)
     public void reportCurrentTime() {
         log.info("FIX-当前时间： {}" , DATE_FORMAT.format(new Date()));
     }
@@ -51,7 +51,7 @@ public class ScheduleTest {
     /**
      * 表示 在指定时间执行
      */
-    @Scheduled(cron = "${corn-fix-time}")
+    //@Scheduled(cron = "${corn-fix-time}")
     public void fixTimeExecution() {
         log.info("CRO-当前时间： {}" , DATE_FORMAT.format(new Date()));
     }

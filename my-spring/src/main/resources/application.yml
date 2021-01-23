@@ -34,6 +34,9 @@ logging:
   config: classpath:log4j2.xml
   level:
     com.lwk.myspring.mysql.dao: debug
+    org.springframework.jdbc.datasource: info
+    net.javacrumbs.shedlock.core: info
+    org.springframework.jdbc.core: info
 
 # CORN表达式
 corn-fix-time: '0/10 * * * * ? '
