@@ -15,7 +15,7 @@ import javax.sql.DataSource;
  * @date 2021-01-23 11:51
  */
 @Configuration
-@EnableScheduling
+//@EnableScheduling
 @EnableSchedulerLock(defaultLockAtMostFor = "10m")
 public class ShedLockConfig {
     @Bean

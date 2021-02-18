@@ -18,7 +18,7 @@ import java.util.Date;
  * @date 2021-01-23 11:05
  */
 @Component
-@EnableScheduling
+//@EnableScheduling
 @EnableAsync
 @Slf4j
 public class LockedTaskB {

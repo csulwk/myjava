@@ -23,7 +23,17 @@ spring:
       initialSize: 5
       minIdle: 5
       maxActive: 20
-
+  kafka:
+    bootstrap-servers: 192.168.99.100:9091,192.168.99.100:9092,192.168.99.100:9093
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringSerializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonSerializer
+      group-id: spring-group
+      properties:
+        spring.json.trusted.packages: "com.lwk.myspring.kafka.spring.MyMessage"
 mybatis:
   type-aliases-package: com.lwk.myspring.mysql.entity
   mapper-locations: classpath:mapper/*.xml
