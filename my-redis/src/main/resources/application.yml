@@ -1,0 +1,22 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: my-redis
+  redis:
+    # 连接地址
+    host: 192.168.99.100
+    port: 6379
+    password: 123456
+    database: 0
+    timeout: 30000
+    jedis:
+      pool:
+        max-idle: 6
+        max-active: 32
+        max-wait: 100
+        min-idle: 4
+
+logging:
+  level:
+    com.lwk.myredis: debug
